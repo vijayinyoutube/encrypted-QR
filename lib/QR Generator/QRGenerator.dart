@@ -62,12 +62,6 @@ class _QRGeneratorState extends State<QRGenerator> {
   }
 
   void navigate() {
-    print(mycontroller.text);
-    print("-----------------------");
-    print(encryption.encryptMsg(mycontroller.text).base16 is encrypt.Encrypted
-        ? encryption.encryptMsg(mycontroller.text).base16
-        : encryption.encryptMsg(mycontroller.text));
-    print("-----------------------");
     Navigator.push(
         context,
         MaterialPageRoute(

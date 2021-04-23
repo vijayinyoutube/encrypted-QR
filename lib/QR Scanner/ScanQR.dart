@@ -38,8 +38,8 @@ class _ScanQRState extends State<ScanQR> {
                   Flexible(
                     child: Text(
                       encryption.encryptMsg(qrData).base16 is encrypt.Encrypted
-                          ? encryption.encryptMsg(qrData).base16
-                          : encryption.encryptMsg(qrData).toString(),
+                          ? encryption.decryptMsg(encryption.encryptMsg(qrData).base16)
+                          : encryption.decryptMsg(encryption.encryptMsg(qrData)),
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 20),
                     ),
