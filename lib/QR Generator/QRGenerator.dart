@@ -1,5 +1,6 @@
 import 'package:encryption/AESEncryption/AES.dart';
 import 'package:flutter/material.dart';
+import 'package:encrypt/encrypt.dart' as encrypt;
 
 import 'GeneratedQR.dart';
 
@@ -13,7 +14,7 @@ class QRGenerator extends StatefulWidget {
 TextEditingController mycontroller = new TextEditingController();
 
 class _QRGeneratorState extends State<QRGenerator> {
-AESEncryption encryption = new AESEncryption();
+  AESEncryption encryption = new AESEncryption();
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,6 @@ AESEncryption encryption = new AESEncryption();
               width: ((MediaQuery.of(context).size.width) / 2) - 45,
               height: 35,
               child: ElevatedButton(
-                
                 child: Text(
                   "Generate QR",
                   style: TextStyle(fontSize: 17),
@@ -63,27 +63,15 @@ AESEncryption encryption = new AESEncryption();
 
   void navigate() {
     print(mycontroller.text);
+    print("-----------------------");
+    print(encryption.encryptMsg(mycontroller.text).base16 is encrypt.Encrypted
+        ? encryption.encryptMsg(mycontroller.text).base16
+        : encryption.encryptMsg(mycontroller.text));
+    print("-----------------------");
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => GeneratedQR(encryption.encryptMsg(mycontroller.text).base16)));
-    // Navigator.push(
-    //     context,
-    //     MaterialPageRoute(
-    //         builder: (context) => GeneratedQR(mycontroller.text)));
+            builder: (context) =>
+                GeneratedQR(encryption.encryptMsg(mycontroller.text).base16)));
   }
-
-  //   void navigate() {
-  //   // var vj = encryption.encryptMsg().base16 is encrypt.Encrypted
-  //   //     ? encryption.encryptMsg().base16
-  //   //     : encryption.encryptMsg();
-  //   // print("-----------------------------");
-  //   // print("Encrypted Text: ${encryption.encryptMsg().base16}");
-  //   // print("Decrypted Text: ${encryption.decryptMsg(vj)}");
-  //   Navigator.push(
-  //       context,
-  //       MaterialPageRoute(
-  //           builder: (context) => GeneratedQR(encryption.encryptMsg().base16)));
-  // }
-
 }

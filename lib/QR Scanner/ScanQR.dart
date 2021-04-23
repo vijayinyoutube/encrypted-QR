@@ -1,9 +1,8 @@
 import 'package:encryption/AESEncryption/AES.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:barcode_scan/platform_wrapper.dart';
 import 'package:encrypt/encrypt.dart' as encrypt;
-import 'package:barcode_scan/model/scan_options.dart';
 
 class ScanQR extends StatefulWidget {
   ScanQR({Key? key}) : super(key: key);
@@ -40,7 +39,7 @@ class _ScanQRState extends State<ScanQR> {
                     child: Text(
                       encryption.encryptMsg(qrData).base16 is encrypt.Encrypted
                           ? encryption.encryptMsg(qrData).base16
-                          : encryption.encryptMsg(qrData),
+                          : encryption.encryptMsg(qrData).toString(),
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 20),
                     ),
@@ -70,12 +69,10 @@ class _ScanQRState extends State<ScanQR> {
                     style: TextStyle(fontSize: 17),
                   ),
                   onPressed: () async {
-                    var options = ScanOptions(
-                      autoEnableFlash: true,
-                    );
-                    var data = await BarcodeScanner.scan(options: options);
+                    var data = await FlutterBarcodeScanner.scanBarcode(
+                        "red", "Cancel", true, ScanMode.QR);
                     setState(() {
-                      qrData = data.rawContent.toString();
+                      qrData = data.toString();
                       hasdata = true;
                     });
                   },
