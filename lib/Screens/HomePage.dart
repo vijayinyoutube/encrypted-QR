@@ -15,17 +15,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // return Scaffold(
-    //   body: Center(
-    //     child: ElevatedButton(
-    //       child: Text(
-    //         "Generate QR",
-    //         style: TextStyle(fontSize: 17),
-    //       ),
-    //       onPressed: navigate,
-    //     ),
-    //   ),
-    // );
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -103,6 +92,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-
-
 }
