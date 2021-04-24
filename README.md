@@ -1,4 +1,4 @@
-# Encrypted QR
+# 📱 Encrypted QR
 
 
 [![BUILD](https://img.shields.io/badge/Build-Passing-<COLOR>.svg)](https://github.com/vijayinyoutube/encrypted-QR)
@@ -13,12 +13,12 @@
 </p>
 
 
-## Flutter
+## ✨ Flutter
 [Flutter](https://flutter.dev/) is a crossplatfrom UI tool kit that helps in developing native Android and iOS app from a single code base.
 
 
 
-## App
+##  🚩App
 
 Check out the video tutorial 👉 : 
 
@@ -26,7 +26,7 @@ To know more awesome content about Flutter.,
 
 Visit my channel 👉 : https://www.youtube.com/channel/UCBC_Z7jla1GSITcqLKAtPxQ
 
-## Dependencies
+## 📐 Dependencies
 ```pubspec.yaml
   flutter_barcode_scanner: ^2.0.0
   encrypt: ^5.0.0
@@ -34,7 +34,7 @@ Visit my channel 👉 : https://www.youtube.com/channel/UCBC_Z7jla1GSITcqLKAtPxQ
   url_launcher: ^6.0.3
 ```
 
-## Sample Results
+## 🎁 Sample Results
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/58719230/95013795-43db3a80-0660-11eb-86d7-273e4ced32d4.png">
@@ -44,7 +44,7 @@ Visit my channel 👉 : https://www.youtube.com/channel/UCBC_Z7jla1GSITcqLKAtPxQ
 
 
 
-## License
+## 📑 License
 
 ```
 MIT License
