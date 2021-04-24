@@ -1,8 +1,8 @@
-import 'package:encryption/AESEncryption/AES.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:encrypt/encrypt.dart' as encrypt;
+import 'package:encryption/AESEncryption/AES.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class ScanQR extends StatefulWidget {
   ScanQR({Key? key}) : super(key: key);

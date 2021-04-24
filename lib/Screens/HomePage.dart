@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:encrypt/encrypt.dart' as encrypt;
 import 'package:encryption/AESEncryption/AES.dart';
 import 'package:encryption/QR%20Scanner/ScanQR.dart';
-import 'package:encryption/QR%20Generator/GeneratedQR.dart';
 import 'package:encryption/QR%20Generator/QRGenerator.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -33,55 +31,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  CircleAvatar(
-                    backgroundImage: AssetImage(
-                      "assets/images/QR.jpg",
-                    ),
-                    foregroundColor: Colors.transparent,
-                    backgroundColor: Colors.transparent,
-                    radius: 150,
-                  ),
+                  buildImage(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Hero(
-                        tag: "Scan QR",
-                        child: Container(
-                          width: ((MediaQuery.of(context).size.width) / 2) - 45,
-                          height: 50,
-                          child: ElevatedButton(
-                            child: Text(
-                              "Scan QR",
-                              style: TextStyle(fontSize: 17),
-                            ),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ScanQR()));
-                            },
-                          ),
-                        ),
-                      ),
+                      buildScanQRBtn(context),
                       SizedBox(
                         width: 25,
                       ),
-                      Container(
-                        width: ((MediaQuery.of(context).size.width) / 2) - 45,
-                        height: 50,
-                        child: ElevatedButton(
-                          child: Text(
-                            "Generate QR",
-                            style: TextStyle(fontSize: 17),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => QRGenerator()));
-                          },
-                        ),
-                      ),
+                      buildGenerateQRBtn(context),
                     ],
                   ),
                 ],
@@ -93,3 +51,45 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+Widget buildImage() => CircleAvatar(
+      backgroundImage: AssetImage(
+        "assets/images/QR.jpg",
+      ),
+      foregroundColor: Colors.transparent,
+      backgroundColor: Colors.transparent,
+      radius: 150,
+    );
+
+Widget buildScanQRBtn(BuildContext context) => Hero(
+      tag: "Scan QR",
+      child: Container(
+        width: ((MediaQuery.of(context).size.width) / 2) - 45,
+        height: 50,
+        child: ElevatedButton(
+          child: Text(
+            "Scan QR",
+            style: TextStyle(fontSize: 17),
+          ),
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => ScanQR()));
+          },
+        ),
+      ),
+    );
+
+Widget buildGenerateQRBtn(BuildContext context) => Container(
+      width: ((MediaQuery.of(context).size.width) / 2) - 45,
+      height: 50,
+      child: ElevatedButton(
+        child: Text(
+          "Generate QR",
+          style: TextStyle(fontSize: 17),
+        ),
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => QRGenerator()));
+        },
+      ),
+    );
