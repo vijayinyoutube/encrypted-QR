@@ -68,9 +68,6 @@ class _ScanQRState extends State<ScanQR> {
                         "red", "Cancel", true, ScanMode.QR);
                     setState(() {
                       qrData = data.toString();
-                      print("+=======================");
-                      print(qrData);
-                      print("+=======================");
                       hasdata = true;
                       qrData = encryption
                           .decryptMsg(encryption.getCode(qrData))
