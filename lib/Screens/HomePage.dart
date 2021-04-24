@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:encrypt/encrypt.dart' as encrypt;
 import 'package:encryption/AESEncryption/AES.dart';
-import 'package:encryption/QR%20Generator/GeneratedQR.dart';
+import 'package:encryption/QR%20Scanner/ScanQR.dart';
+import 'package:encryption/QR%20Generator/QRGenerator.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -14,28 +14,82 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          child: Text(
-            "Generate QR",
-            style: TextStyle(fontSize: 17),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text("QR Scan/Generate"),
+      ),
+      body: Container(
+        child: Container(
+          height: (MediaQuery.of(context).size.height),
+          child: SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                  minHeight: (MediaQuery.of(context).size.height) -
+                      AppBar().preferredSize.height -
+                      kToolbarHeight),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  buildImage(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      buildScanQRBtn(context),
+                      SizedBox(
+                        width: 25,
+                      ),
+                      buildGenerateQRBtn(context),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ),
-          onPressed: navigate,
         ),
       ),
     );
   }
-
-  void navigate() {
-    var vj = encryption.encryptMsg().base16 is encrypt.Encrypted
-        ? encryption.encryptMsg().base16
-        : encryption.encryptMsg();
-    print("-----------------------------");
-    print("Encrypted Text: ${encryption.encryptMsg().base16}");
-    print("Decrypted Text: ${encryption.decryptMsg(vj)}");
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => GeneratedQR(encryption.encryptMsg().base16)));
-  }
 }
+
+Widget buildImage() => CircleAvatar(
+      backgroundImage: AssetImage(
+        "assets/images/QR.jpg",
+      ),
+      foregroundColor: Colors.transparent,
+      backgroundColor: Colors.transparent,
+      radius: 150,
+    );
+
+Widget buildScanQRBtn(BuildContext context) => Hero(
+      tag: "Scan QR",
+      child: Container(
+        width: ((MediaQuery.of(context).size.width) / 2) - 45,
+        height: 50,
+        child: ElevatedButton(
+          child: Text(
+            "Scan QR",
+            style: TextStyle(fontSize: 17),
+          ),
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => ScanQR()));
+          },
+        ),
+      ),
+    );
+
+Widget buildGenerateQRBtn(BuildContext context) => Container(
+      width: ((MediaQuery.of(context).size.width) / 2) - 45,
+      height: 50,
+      child: ElevatedButton(
+        child: Text(
+          "Generate QR",
+          style: TextStyle(fontSize: 17),
+        ),
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => QRGenerator()));
+        },
+      ),
+    );
