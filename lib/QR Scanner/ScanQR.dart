@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:encrypt/encrypt.dart' as encrypt;
 import 'package:encryption/AESEncryption/AES.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
@@ -35,13 +34,10 @@ class _ScanQRState extends State<ScanQR> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Flexible(
-                    child: Text(
-                      encryption.decryptMsg(encryption
-                          .getCode(encryption.encryptMsg(qrData).base16)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20),
-                    ),
+                  Text(
+                    qrData,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 20),
                   ),
                   IconButton(
                     icon: Icon(Icons.launch_outlined),
@@ -72,7 +68,13 @@ class _ScanQRState extends State<ScanQR> {
                         "red", "Cancel", true, ScanMode.QR);
                     setState(() {
                       qrData = data.toString();
+                      print("+=======================");
+                      print(qrData);
+                      print("+=======================");
                       hasdata = true;
+                      qrData = encryption
+                          .decryptMsg(encryption.getCode(qrData))
+                          .toString();
                     });
                   },
                 ),

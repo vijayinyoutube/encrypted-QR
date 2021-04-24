@@ -66,22 +66,8 @@ class _QRGeneratorState extends State<QRGenerator> {
       );
 
   void navigate() {
-    // print("-----------------------------");
-    // encrypt.Encrypted temp = encryption.encryptMsg(mycontroller.text);
-    // //  String qrData = encryption.encryptMsg(mycontroller.text).base16();
-    // var vj = encryption.decryptMsg(temp);
-    // print(vj);
-    // // print(qrData);
-    // // print("Decrypted Text: ${encryption.decryptMsg(qrData)}");
-
-    // print("=============================");
-    // print(encryption.encryptMsg(mycontroller.text).base16);
-    // print(encryption.getCode("bdf4ce76ac4e8787a346ac1a9c8a2e89").base16);
-    print(encryption.decryptMsg(
-        encryption.getCode(encryption.encryptMsg(mycontroller.text).base16)));
-    // print(encryption.decryptMsg());
-    //print("=============================");
-
+    // print(encryption.decryptMsg(
+    //     encryption.getCode(encryption.encryptMsg(mycontroller.text).base16)));
     Navigator.push(
         context,
         MaterialPageRoute(
