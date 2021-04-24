@@ -29,7 +29,6 @@ Visit my channel 👉 : https://www.youtube.com/channel/UCBC_Z7jla1GSITcqLKAtPxQ
 ## Dependencies
 ```pubspec.yaml
   flutter_barcode_scanner: ^2.0.0
-  cupertino_icons: ^1.0.2
   encrypt: ^5.0.0
   qr_flutter: ^4.0.0
   url_launcher: ^6.0.3
