@@ -8,4 +8,14 @@ class AESEncryption {
   encryptMsg(String text) => encrypter.encrypt(text, iv: iv);
 
   decryptMsg(encrypt.Encrypted text) => encrypter.decrypt(text, iv: iv);
+
+  getCode(String encoded) {
+    var temp = encrypt.IV.fromBase16(encoded);
+    return temp;
+  }
+
+  getCode1(String encoded) {
+    var temp = encrypt.Encrypted.fromBase16(encoded);
+    return temp;
+  }
 }
