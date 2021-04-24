@@ -1,7 +1,5 @@
 import 'GeneratedQR.dart';
 import 'package:flutter/material.dart';
-
-import 'package:encrypt/encrypt.dart' as encrypt;
 import 'package:encryption/AESEncryption/AES.dart';
 
 class QRGenerator extends StatefulWidget {
@@ -66,8 +64,6 @@ class _QRGeneratorState extends State<QRGenerator> {
       );
 
   void navigate() {
-    // print(encryption.decryptMsg(
-    //     encryption.getCode(encryption.encryptMsg(mycontroller.text).base16)));
     Navigator.push(
         context,
         MaterialPageRoute(
